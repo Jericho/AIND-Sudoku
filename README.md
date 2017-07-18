@@ -3,11 +3,14 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: If two 'peer' boxes share the same two possible values, then none of the peers they have in common can have either of these two values.
+For example, if two adjacent cells can be either `1` or `5`, none of their common peers can be `1` or `5`. 
+In `solution.py`, this is implemented as a method called `naked_twins` which is invoked in `reduce_puzzle` where other constrains are invoked as well.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: To implement the "diagonal" sodoku, we don't need to modify the logic already implemented in `solution.py` but rather we need to modify the list of 'peers' for a given box.
+This is achieved by creating a `diag_units` to hold the list of boxes forming the two diagonals in a sudoku board, and to add this new list to the existing `unitlist`. 
 
 ### Install
 
