@@ -27,7 +27,6 @@ def naked_twins(values):
         twins = [peer for peer in peer_boxes if values[peer] == values[box] and len(values[box]) == 2]
 
         for twin in twins:
-            print("Found naked twin in " + box + " and " + twin + ". Value: " + values[box])
             common_peers = peers[box].intersection(peers[twin])
             for common_peer in common_peers:
                 if values[common_peer] != values[box][0]:
@@ -46,7 +45,8 @@ boxes = cross(rows, cols)
 row_units = [cross(r, cols) for r in rows]
 column_units = [cross(rows, c) for c in cols]
 square_units = [cross(rs, cs) for rs in ('ABC','DEF','GHI') for cs in ('123','456','789')]
-unitlist = row_units + column_units + square_units
+diag_units = [['A1', 'B2', 'C3', 'D4', 'E5', 'F6', 'G7', 'H8', 'I9'], ['A9', 'B8', 'C7', 'D6', 'E5', 'F4', 'G3', 'H2', 'I1']]
+unitlist = row_units + column_units + square_units + diag_units
 units = dict((s, [u for u in unitlist if s in u]) for s in boxes)
 peers = dict((s, set(sum(units[s],[]))-set([s])) for s in boxes)
 
